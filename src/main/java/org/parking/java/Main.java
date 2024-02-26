@@ -1,8 +1,15 @@
 package org.parking.java;
 
 import org.parking.java.entities.Cliente;
+import org.parking.java.entities.Cupo;
+import org.parking.java.entities.Empleado;
+import org.parking.java.entities.Pago;
 import org.parking.java.entities.TipoVehiculo;
 import org.parking.java.entities.Vehiculo;
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -25,11 +32,41 @@ public class Main {
        cliente1.addVehicle(carrito2);
        cliente1.addVehicle("GIR", TipoVehiculo.MOTO);
        //recorrer la lista de vehiculos del cliente
-       for(Vehiculo veh :cliente1.misVehiculos){
+       /*for(Vehiculo veh :cliente1.misVehiculos){
             System.out.println(veh.placa);
             System.out.println(veh.tipoVehiculo);
             System.out.println("------------");
-       }
+       }*/
+       Cupo cupito1 = new Cupo('A');
+       Cupo cupito2 = new Cupo('B');
 
+       Empleado empleado1 = new Empleado("Samuel", "Pepe", 12);
+       Empleado empleado2 = new Empleado("David", "Giron", 1);
+
+       LocalDateTime fechaHoraInicio = LocalDateTime.of(2024, Month.FEBRUARY, 1, 15, 30, 0);
+       LocalDateTime fechaHoraFin = LocalDateTime.of(2024,Month.FEBRUARY, 10, 6, 15, 0);
+       //Hacer registros(pagos) de vehiculos 
+       //Otra forma de hacerlo
+       //Pago pago1 = new Pago(LocalDateTime.of(2024, Month.FEBRUARY, 1, 15, 30, 0), LocalDateTime.of(2024,Month.FEBRUARY, 10, 6, 15, 0), 5000.0, carrito1, cupito1);
+       Pago pago1 = new Pago(fechaHoraInicio,fechaHoraFin,5000.0,cliente1.misVehiculos.get(0) , cupito1, empleado1);
+       Pago pago2 = new Pago(fechaHoraInicio,fechaHoraFin,10000.0,cliente1.misVehiculos.get(1) , cupito2,empleado2);
+
+       //añadir estos pagos a una lista de pagos
+
+       List<Pago> misPagos = new ArrayList<Pago>();
+       misPagos.add(pago1);
+       misPagos.add(pago2);
+
+       //recorrer los pagos para mostrar informacion 
+       for(Pago pag :misPagos){
+        System.out.println("|Placa: " + pag.vehiculo.placa + "|");
+        System.out.println("|Tipo: " + pag.vehiculo.tipoVehiculo + "|");
+        System.out.println("|Valor: " + pag.valor + "|");
+        System.out.println("|Fecha y hora de inicio: " + pag.fechaInicio + "|");
+        System.out.println("|Fecha y hora de fin: " + pag.fechaHoraFin + "|");
+        System.out.println("|Cupo: " + pag.cupo.nombre + "|");
+        System.out.println("|Codigo empleado : " + pag.empleado.codigo + "|");
+        System.out.println("------------");
+       }
     }
 }
