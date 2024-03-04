@@ -4,21 +4,21 @@ import java.time.LocalDateTime;
 public class Pago {
 
     //atributos intrinsecos
-    public LocalDateTime fechaInicio;
-    public LocalDateTime fechaHoraFin;
-    public Double valor;
+    private LocalDateTime fechaInicio;
+    private LocalDateTime fechaHoraFin;
+    private Double valor;
 
     //atributos de relacion 
-    public Vehiculo vehiculo;
-    public Cupo cupo;
-    public Empleado empleado;
+    private Vehiculo vehiculo;
+    private Cupo cupo;
+    private Empleado empleado;
     
 
     //constructor por defecto
     public Pago() {
     }
 
-
+//constructor parametrizado
     public Pago(LocalDateTime fechaInicio, LocalDateTime fechaHoraFin, Double valor, Vehiculo vehiculo, Cupo cupo,
             Empleado empleado) {
         this.fechaInicio = fechaInicio;
@@ -29,6 +29,54 @@ public class Pago {
         this.empleado = empleado;
     }
 
-    //constructor parametrizado
+    public LocalDateTime getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(LocalDateTime fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public LocalDateTime getFechaHoraFin() {
+        return fechaHoraFin;
+    }
+
+    public void setFechaHoraFin(LocalDateTime fechaHoraFin) {
+        this.fechaHoraFin = fechaHoraFin;
+    }
+
+    public Double getValor() {
+        return valor;
+    }
+
+    public void setValor(Double valor) {
+        this.valor = valor;
+    }
+
+    public Vehiculo getVehiculo() {
+        return vehiculo;
+    }
+
+    public void setVehiculo(Vehiculo vehiculo) {
+        this.vehiculo = vehiculo;
+    }
+
+    public Cupo getCupo() {
+        return cupo;
+    }
+
+    public void setCupo(Cupo cupo) {
+        this.cupo = cupo;
+    }
+
+    public Empleado getEmpleado() {
+        return empleado;
+    }
+
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
+    }
+
+    
     
 }
